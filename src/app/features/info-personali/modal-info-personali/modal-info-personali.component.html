@@ -1,0 +1,131 @@
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Info Personali</h4>
+		<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Close click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-scrollable">
+		
+					<form class="mt-4 mb-5" id="IPForm">
+						<div class="form-group">
+							<label for="IPNome">Nome</label>
+							<input type="text" class="form-control" id="IPNome" name="IPNome" placeholder="Mario" required>
+						</div>
+						<div class="form-group">
+							<label for="IPCognome">Cognome</label>
+							<input type="text" class="form-control" id="IPCognome" name="IPCognome" placeholder="Rossi" required>
+							<div class="errors-messages error-ip-nomecognome invalid-feedback mt-2">
+								I campi Nome e Cognome sono obbligatori.
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="IPViaCivico">Via e numero civico</label>
+							<input type="text" class="form-control" id="IPViaCivico" name="IPViaCivico" placeholder="Via Garibaldi 78">
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="IPCap">Codice Postale</label>
+								<input type="text" class="form-control" id="IPCap" name="IPCap" placeholder="10010">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="IPCitta">Città</label>
+								<input type="text" class="form-control" id="IPCitta" name="IPCitta" placeholder="Roma">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="">Nazione</label>
+							<select class="mdb-select" searchable="Seleziona dalla lista" id="IPNazione" name="IPNazione">
+								<option value="default" disabled selected>Seleziona dalla lista</option>
+
+							</select>
+						</div>
+		
+						<div class="form-group">
+							<label class="w-100">Telefono(i)</label>
+							<div class="form-row wrapper-telefono">
+								<div class="form-group col-md-4">
+									<select class="form-control" name="IPTipoTelefono[]">
+										<option value="default" disabled selected>Tipo</option>
+										<option value="abitazione">Abitazione</option>
+										<option value="lavoro">Lavoro</option>
+										<option value="cellulare">Cellulare</option>
+									</select>
+								</div>
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" name="IPTelefono[]" placeholder="+39 01 23 45 67 89">
+								</div>
+								<div class="form-group col-md-2">
+									<a class="btn-floating btn-primary btn-sm m-0 aggiungi-telefono">
+										<i class="fa fa-plus"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+		
+						<div class="form-group">
+							<label for="IPEmail">Email</label>
+							<input type="email" class="form-control" id="IPEmail" name="IPEmail" placeholder="mario.rossi@mail.it">
+						</div>
+		
+						<div class="form-group">
+							<label class="w-100">Sito web / Blog / Linkedin</label>
+							<div class="form-row wrapper-sito">
+								<div class="form-group col-md-10">
+									<input type="text" class="form-control" name="IPSito[]" placeholder="www.mario.rossi.it">
+								</div>
+								<div class="form-group col-md-2">
+									<a class="btn-floating btn-primary btn-sm m-0 aggiungi-sito">
+										<i class="fa fa-plus"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+		
+						<div class="form-group">
+							<label class="w-100" for="">Sesso</label>
+							<div class="form-check form-check-inline">
+								<input type="radio" class="form-check-input" id="IPSessoM" name="IPSesso" value="Maschile">
+								<label class="form-check-label" for="IPSessoM">Maschile</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input type="radio" class="form-check-input" id="IPSessoF" name="IPSesso" value="Femminile">
+								<label class="form-check-label" for="IPSessoF">Femminile</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input type="radio" class="form-check-input" id="IPSessoN" name="IPSesso" value="" checked>
+								<label class="form-check-label" for="IPSessoN">Da non indicare</label>
+							</div>
+						</div>
+		
+						<div class="form-group">
+							<label class="w-100" for="IPDataNascita">Data di nascita</label>
+							<div class="md-form md-outline input-with-post-icon" style="margin-top: 0">
+								<input placeholder="Seleziona" type="text" id="IPDataNascita" name="IPDataNascita"
+									class="form-control datepicker">
+								<i class="fa fa-calendar input-prefix" tabindex=0></i>
+							</div>
+						</div>
+		
+						<div class="form-group">
+							<label for="">Nazionalità</label>
+							<select class="mdb-select" searchable="Seleziona dalla lista" id="IPNazionalita" name="IPNazionalita"
+								>
+								<option value="default" disabled selected>Seleziona dalla lista</option>
+
+							</select>
+						</div>
+					</form>
+		
+				</div>
+		
+			</div>
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Save</button>
+	</div>

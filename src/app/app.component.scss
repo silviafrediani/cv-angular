@@ -1,0 +1,27 @@
+.wrapper-salva-cv {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  border: 0;
+  padding: 5px 100px;
+  border-radius: .125rem;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.4), 0 4px 15px 0 rgba(0, 0, 0, 0.35);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.4), 0 4px 15px 0 rgba(0, 0, 0, 0.35);
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+	z-index: 10;
+}
+  .wrapper-salva-cv.hide {
+    bottom: -200px !important; }
+
+.toggle-salva-cv {
+  position: fixed;
+  bottom: 6px;
+  right: 20px;
+	z-index: 11;
+}

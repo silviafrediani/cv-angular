@@ -3,16 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FotoComponent } from './features/foto/foto.component';
+import { InfoPersonaliComponent } from './features/info-personali/info-personali.component';
+import { FormsModule } from '@angular/forms';
+
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ModalInfoPersonaliComponent } from './features/info-personali/modal-info-personali/modal-info-personali.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FotoComponent,
+    InfoPersonaliComponent,
+    ModalInfoPersonaliComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    NgbModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    NgbActiveModal
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

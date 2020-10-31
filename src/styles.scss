@@ -1,1 +1,84 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* mixin */
+@mixin rgba-background($hexcolor, $opacity) {
+  background-color: $hexcolor;
+  background-color: rgba($hexcolor, $opacity);
+}
+@mixin bordoArrotondato($raggio) {
+  -webkit-border-radius: $raggio;
+  -moz-border-radius: $raggio;
+  -ms-border-radius: $raggio;
+  -o-border-radius: $raggio;
+  border-radius: $raggio;
+}
+@mixin boxSizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@mixin transition($prop,$durata,$easing) {
+  -webkit-transition: $prop $durata $easing;
+  -moz-transition: $prop $durata $easing;
+  -ms-transition: $prop $durata $easing;
+  -o-transition: $prop $durata $easing;
+  transition: $prop $durata $easing;
+}
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+@mixin scale($val) {
+  @include transform(scale($val));
+}
+@mixin rotate($val) {
+  @include transform(rotate($val));
+}
+@mixin translate($x,$y) {
+  @include transform(translate($x,$y));
+}
+@mixin ombra($assex,$assey,$blur,$spread,$colore){
+  -webkit-box-shadow: $assex $assey $blur $spread $colore;
+  -moz-box-shadow: $assex $assey $blur $spread $colore;
+  -ms-box-shadow: $assex $assey $blur $spread $colore;
+  -o-box-shadow: $assex $assey $blur $spread $colore;
+  box-shadow: $assex $assey $blur $spread $colore;
+}
+/** Mixin per centrare elementi assoluti sia su asse x che y **/
+@mixin absolute-center-el($asse: xy) {
+	position: absolute;
+	@if $asse == xy {
+		left: 50%;
+		top: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+	@if $asse == x {
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
+	@if  $asse == y {
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+}
+
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
