@@ -5,34 +5,229 @@
 	</div>
 	<div class="col-12 col-md-8 col-lg-9">
 
-		<button id="IPButtonCompilare" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect" (click)="openModal()">
-			<i class="fa fa-plus-circle"></i> Compilare
-		</button>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-scrollable">
 
-		<div class="">
-			<ul class="list-group">
-				<li id="ViewIPNomeCognome" class="list-group-item">
-				</li>
-				<li id="ViewIPIndirizzo" class="list-group-item">
-				</li>
-				<li id="ViewIPTelefono" class="list-group-item">
-				</li>
-				<li id="ViewIPEmail" class="list-group-item">
-				</li>
-				<li id="ViewIPSito" class="list-group-item">
-				</li>
-				<li id="ViewIPSesso" class="list-group-item">
-				</li>
-				<li id="ViewIPDataNascita" class="list-group-item">
-				</li>
-				<li id="ViewIPNazionalita" class="list-group-item">
-				</li>
-			</ul>
+					<div *ngIf="infoPersonali && !modifica">  
+						<p *ngIf="infoPersonali.nome"><strong>Nome: </strong>{{ infoPersonali.nome }}</p>
+						<p *ngIf="infoPersonali.cognome"><strong>Cognome: </strong>{{ infoPersonali.cognome }}</p>
+						<p *ngIf="infoPersonali.indirizzo"><strong>Indirizzo: </strong>{{ infoPersonali.indirizzo }}, 
+							<span *ngIf="infoPersonali.cap">{{ infoPersonali.cap }} - </span>
+							<span *ngIf="infoPersonali.citta">{{ infoPersonali.citta }} </span>
+							<span *ngIf="infoPersonali.nazione && infoPersonali.nazione != 'default'">({{ infoPersonali.nazione }})</span>
+						</p>
+						<p *ngIf="infoPersonali.email"><strong>Email: </strong>{{ infoPersonali.email }}</p>
+						<p *ngIf="infoPersonali.sesso"><strong>Sesso: </strong>{{ infoPersonali.sesso }}</p>
+						<p *ngIf="infoPersonali.data_nascita"><strong>Data di nascita: </strong>
+							{{ infoPersonali.data_nascita.day + '/' + infoPersonali.data_nascita.month + '/' + infoPersonali.data_nascita.year }}</p>
+						<p *ngIf="infoPersonali.nazionalita && infoPersonali.nazionalita != 'default'">Nazionalità: {{ infoPersonali.nazionalita }}</p>
+						<div *ngIf="infoPersonali.siti"> 	
+							<div *ngFor="let sito of infoPersonali.siti; first as first;">
+								<p *ngIf="first && sito.length"><strong>Siti web: </strong></p>
+								<p *ngIf="sito.length">{{sito}}</p>
+							</div>
+						</div>
+						<div *ngIf="infoPersonali.telefoni">
+							<div *ngFor="let telefono of infoPersonali.telefoni; first as first;">
+								<p *ngIf="first && telefono.tipo.length && telefono.tipo != 'default' && telefono.numero.length">Telefoni: </p>
+								<p *ngIf="telefono.tipo.length && telefono.tipo != 'default' && telefono.numero.length">{{telefono.tipo}} - {{telefono.numero}}</p>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="!curriculumStore.curriculum.infoPersonali || modifica==true">
+						<form novalidate [formGroup]="IPForm" (ngSubmit)="salvaIP()" class="mt-4 mb-5">
+							<div class="form-group">
+								<label for="foto">Foto</label>
+								<input type="file" 
+								class="form-control-file" 
+								id="foto"
+								name="foto"
+								formControlName="foto">
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="">Nome</label>
+									<input type="text" 
+									class="form-control" 
+									formControlName="nome"
+									[ngClass]= "{
+										'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+										'is-valid': nome.valid && nome.dirty
+									}">
+									<div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="invalid-feedback">
+										<div *ngIf="nome.errors.required">
+											Campo nome obbligatorio.
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label for="">Cognome</label>
+									<input type="text" 
+									class="form-control" 
+									formControlName="cognome"
+									[ngClass]= "{
+										'is-invalid': cognome.invalid && (cognome.dirty || cognome.touched),
+										'is-valid': cognome.valid && nome.dirty
+									}">
+									<div *ngIf="cognome.invalid && (cognome.dirty || cognome.touched)" class="invalid-feedback">
+										<div *ngIf="cognome.errors.required">
+											Campo cognome obbligatorio.
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-5">
+									<label for="">Via e numero civico</label>
+									<input 
+									type="text" 
+									class="form-control" 
+									formControlName="indirizzo">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="">CAP</label>
+									<input 
+									type="text" 
+									class="form-control" 
+									formControlName="cap">
+								</div>
+								<div class="form-group col-md-5">
+									<label for="">Città</label>
+									<input type="text" 
+									class="form-control" 
+									formControlName="citta">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="">Nazione</label>
+								<select class="form-control" formControlName="nazione">
+									<option value="default">Seleziona dalla lista</option>
+									<option [value]="nazioneCurrent.name" *ngFor="let nazioneCurrent of nazioni">{{ nazioneCurrent.name }}</option>
+								</select>
+							</div>
+			
+							<div class="form-group" formArrayName="telefoni">
+								<label class="w-100">Telefono(i)</label>
+								<div [formGroupName]="i" class="form-row" *ngFor="let telefono of telefoni.controls; let i=index;first as first;">
+									<div class="form-group col-md-4">
+										<select class="form-control" formControlName="tipo">
+											<option value="default">Seleziona Tipo</option>
+											<option [value]="tipoTelefono" *ngFor="let tipoTelefono of tipoTelefoni">{{ tipoTelefono }}</option>
+										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<input type="text" 
+										class="form-control" 
+										formControlName="numero"
+										placeholder="Numero">
+									</div>
+									<div class="form-group col-md-2">
+										<i class="fa fa-trash fa-2x" *ngIf="telefono.valid && !first" (click)="rimuoviTelefono(i)" style="cursor:pointer"></i>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="button" class="btn btn-outline-primary btn-sm" *ngIf="telefoni.valid" (click)="aggiungiTelefono()">
+									Aggiungi nuovo telefono
+								</button>
+							</div>	
+			
+							<div class="form-group">
+								<label for="">Email</label>
+								<input type="email" 
+								class="form-control" 
+								formControlName="email"
+								[ngClass]= "{
+									'is-invalid': email.invalid && (email.dirty || email.touched),
+									'is-valid': email.valid && email.dirty
+								}"
+								placeholder="mario@rossi.it">
+								<div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+									<div *ngIf="email.errors.required">
+										Campo email obbligatorio.
+									</div>
+									<div *ngIf="email.errors.email">
+										Il formato dell'email non risulta corretto.
+									</div>
+								</div>	
+							</div>
+			
+							<div class="form-group" formArrayName="siti">
+								<label class="w-100">Sito web / Blog / Linkedin</label>
+								<div class="form-row" *ngFor="let sito of siti.controls; let i=index;first as first;">
+									<div class="form-group col-md-10">
+										<input type="text" 
+										class="form-control" 
+										[formControlName]="i"
+										placeholder="www.mario.rossi.it">
+									</div>
+									<div class="form-group col-md-2">
+										<i class="fa fa-trash fa-2x" *ngIf="sito.valid && !first" (click)="rimuoviSito(i)" style="cursor:pointer"></i>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="button" class="btn btn-outline-primary btn-sm" *ngIf="siti.valid" (click)="aggiungiSito()">
+									Aggiungi nuovo sito
+								</button>
+							</div>
+			
+							<div class="form-group">
+								<label class="w-100" for="">Sesso</label>
+								<div class="form-check form-check-inline" *ngFor="let sesso of tipoSesso">
+									<input type="radio" 
+									class="form-check-input" 
+									formControlName="sesso"
+									[id]="'sesso-' + sesso.id"
+									[value]="sesso.name">
+									<label class="form-check-label" [for]="'sesso-' + sesso.id">{{ sesso.name }}</label>
+								</div>
+							</div>
+			
+							<div class="form-group">
+								<label class="w-100" for="">Data di nascita</label>
+								<div class="form-group">
+									<div class="input-group">
+										<input class="form-control" 
+										placeholder="yyyy-mm-dd" 
+										formControlName="data_nascita"
+										ngbDatepicker #d="ngbDatepicker">
+										<div class="input-group-append">
+											<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+												<i class="fa fa-calendar-alt"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+			
+							<div class="form-group">
+								<label for="">Nazionalita</label>
+								<select class="form-control" formControlName="nazionalita">
+									<option value="default">Seleziona dalla lista</option>
+									<option [value]="nazionalitaCurrent.name" *ngFor="let nazionalitaCurrent of nazioni">{{ nazionalitaCurrent.name }}</option>
+								</select>
+							</div>
+	
+							<button type="submit" [disabled]="IPForm.invalid" class="btn btn-primary">Salva</button>
+						</form>
+
+						<pre><code>{{ IPForm.value | json }}</code></pre>
+		
+					</div>
+				</div>
+		
+			</div>
 		</div>
+
 	</div>
-	<div class="col-12 col-md-9">
+	<div class="col-12 col-md-9" *ngIf="!modifica">
 		<div class="d-flex justify-content-left mt-2">
-			<button id="IPButtonModificare" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
+			<button type="button" class="btn btn-sm btn-outline-primary" (click)="modificaIP()">
 				<i class="fa fa-edit"></i> Modificare
 			</button>
 		</div>

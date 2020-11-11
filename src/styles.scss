@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta+Vaani&display=swap');
 
 /* mixin */
 @mixin rgba-background($hexcolor, $opacity) {
@@ -78,7 +79,8 @@
 	}
 }
 
-
-
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+body { 
+  margin: 0; 
+  font-family: 'Mukta Vaani', sans-serif; 
+}
+@import "../node_modules/font-awesome/scss/font-awesome.scss";

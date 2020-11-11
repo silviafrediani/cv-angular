@@ -3,210 +3,36 @@
 	<div class="section-title">
 		<h1>Curriculum Vitae</h1>
 
-		<div class="errors-messages error-nomecognome alert alert-danger mt-2" *ngIf="false">
-			I campi Nome e Cognome nella sezione "Informazioni Personali" sono obbligatori.
-		</div>
-		<div class="error-photo alert alert-danger mt-2" *ngIf="false">
-			La foto che stai tentando di caricare non è un formato valido (tipi di files supportati: PNG, JPG, GIF) o supera
-			la dimensione massima consentita di 1 MB.
-		</div>
-		<div class="error-file alert alert-danger mt-2" *ngIf="false">
-			Uno o più file allegati che stai tentando di caricare non sono validi o superano la dimensione massima consentita
-			di 1 MB.
-		</div>
 		<input type="hidden" id="IdCandidato" name="IdCandidato" value="" />
-
-		<app-foto></app-foto>
 		
-		<app-info-personali></app-info-personali>
+		<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+			<ngb-panel title="Info Personali">
+				<ng-template ngbPanelContent>
 
-		<!-- ESPERIENZA PROFESSIONALE -->
-		<div class="row section-content align-items-start">
-			<div class="col-12 col-md-4 col-lg-3">
-				<h4 class="titoletto-form">ESPERIENZA PROFESSIONALE</h4>
-			</div>
-			<div class="col-12 col-md-8 col-lg-9">
-				<button id="EPButtonCompilare" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-					<i class="fa fa-plus-circle"></i> Compilare
-				</button>
-				<button id="EPButtonAggiungere" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-					<i class="fa fa-plus-circle"></i> Aggiungere esperienza professionale
-				</button>
-			</div>
-			<div class="col-12 wrapper-ep">
-			</div>
+					<app-info-personali></app-info-personali>
 
-		</div>
+				</ng-template>
+			</ngb-panel>
 
-		<!-- ISTRUZIONE E FORMAZIONE -->
-		<div class="row section-content align-items-start">
-			<div class="col-12 col-md-4 col-lg-3">
-				<h4 class="titoletto-form">ISTRUZIONE E FORMAZIONE</h4>
-			</div>
-			<div class="col-12 col-md-8 col-lg-9">
-				<button id="IFButtonCompilare" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-					<i class="fa fa-plus-circle"></i> Compilare
-				</button>
-				<button id="IFButtonAggiungere" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-					<i class="fa fa-plus-circle"></i> Aggiungere istruzione o formazione
-				</button>
-			</div>
-			<div class="col-12 wrapper-if">
-			</div>
-		</div>
+			<ngb-panel>
+				<ng-template ngbPanelTitle>
+					Esperienze Professionali
+				</ng-template>
+				<ng-template ngbPanelContent>
+					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+					officia
+					aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+					tempor,
+					sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+					helvetica,
+					craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+					occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+					labore sustainable VHS.
+				</ng-template>
+			</ngb-panel>
 
-		<!-- COMPETENZE PERSONALI -->
-		<div class="row section-content align-items-start">
-			<div class="col-12">
-				<h4 class="titoletto-form">COMPETENZE PERSONALI</h4>
-			</div>
+		</ngb-accordion>
 
-			<div class="col-12 pt-4">
-				<div class="row align-items-center">
-					<div class="col-12 col-md-3">
-						<span class="titolo">Lingua madre</span>
-					</div>
-					<div class="col-12 col-md-9">
-						<button id="LMButtonCompilare" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect"
-							data-toggle="modal" data-target="#ModalLinguaMadre">
-							<i class="fa fa-plus-circle"></i> Compilare
-						</button>
-						<p id="ViewLinguaMadre"></p>
-					</div>
-					<div class="col-12">
-						<div class="d-flex justify-content-left mt-2">
-							<button id="LMButtonModificare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-edit"></i>
-							</button>
-							<button id="LMButtonEliminare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-trash"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 pt-4">
-				<div class="row align-items-center">
-					<div class="col-6 col-sm-3">
-						<span class="titolo">Lingue Straniere</span>
-					</div>
-					<div class="col-12 col-md-9">
-						<button id="LSButtonCompilare" type="button"
-							class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-							<i class="fa fa-plus-circle"></i> Compilare
-						</button>
-						<button id="LSButtonAggiungere" type="button"
-							class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-							<i class="fa fa-plus-circle"></i> Aggiungere lingua
-						</button>
-					</div>
-					<div class="col-12 wrapper-ls">
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 pt-4">
-				<div class="row align-items-start">
-					<div class="col-12 col-md-3">
-						<span class="titolo">Competenze Digitali</span>
-					</div>
-					<div class="col-12 col-md-9">
-						<button id="CDButtonCompilare" type="button" class="btn btn-sm btn-outline-primary btn-rounded waves-effect"
-							data-toggle="modal" data-target="#ModalCompetenzeDigitali">
-							<i class="fa fa-plus-circle"></i> Compilare
-						</button>
-						<p id="ViewCompetenzeDigitali"></p>
-					</div>
-					<div class="col-12">
-						<div class="d-flex justify-content-left mt-2">
-							<button id="CDButtonModificare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-edit"></i>
-							</button>
-							<button id="CDButtonEliminare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-trash"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 pt-4" id="cv-AC">
-				<div class="row align-items-center">
-					<div class="col-12 col-md-3">
-						<span class="titolo">Altre Competenze</span>
-					</div>
-					<div class="col-12 col-md-9">
-						<p id="ViewAltreCompetenze"></p>
-					</div>
-					<div class="col-12">
-						<div class="d-flex justify-content-left mt-2">
-							<button id="ACButtonModificare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-edit"></i>
-							</button>
-							<button id="ACButtonEliminare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-trash"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 pt-4" id="cv-UI">
-				<div class="row align-items-start">
-					<div class="col-12 col-md-3">
-						<span class="titolo">Ulteriori informazioni</span>
-					</div>
-					<div class="col-12 col-md-9">
-						<p id="ViewUICategoria"></p>
-						<p id="ViewUIDescrizione"></p>
-					</div>
-					<div class="col-12">
-						<div class="d-flex justify-content-left mt-2">
-							<button id="UIButtonModificare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-edit"></i>
-							</button>
-							<button id="UIButtonEliminare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-trash"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 pt-4" id="cv-TDP">
-				<div class="row align-items-start">
-					<div class="col-12 col-md-3">
-						<span class="titolo">Trattamento dei dati personali</span>
-					</div>
-					<div class="col-12 col-md-9">
-						<p id="ViewTrattamentoDatiPersonali"></p>
-					</div>
-					<div class="col-12">
-						<div class="d-flex justify-content-left mt-2">
-							<button id="TDPButtonModificare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-edit"></i>
-							</button>
-							<button id="TDPButtonEliminare" type="button"
-								class="btn btn-sm btn-outline-primary btn-rounded waves-effect">
-								<i class="fa fa-trash"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
 	</div>
 
 </div>

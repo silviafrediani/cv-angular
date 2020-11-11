@@ -3,31 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FotoComponent } from './features/foto/foto.component';
+
 import { InfoPersonaliComponent } from './features/info-personali/info-personali.component';
+
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
-import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { ModalInfoPersonaliComponent } from './features/info-personali/modal-info-personali/modal-info-personali.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FotoComponent,
-    InfoPersonaliComponent,
-    ModalInfoPersonaliComponent,
+    InfoPersonaliComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     NgbModule
   ],
-  providers: [
-    NgbActiveModal
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
