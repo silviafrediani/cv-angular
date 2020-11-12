@@ -1,0 +1,59 @@
+<div class="row section-content align-items-start">
+	<div class="col-12 col-md-4 col-lg-3">
+		<h4>LINGUA MADRE</h4>
+	</div>
+	<div class="col-12 col-md-8 col-lg-9">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-scrollable">
+
+					<form novalidate [formGroup]="LMForm" (ngSubmit)="salvaLM()" class="mt-4 mb-5">
+
+							<div class="form-group" formArrayName="lingue">
+								<label class="w-100">Lingua Madre:</label>
+								<div class="form-row" *ngFor="let lingua of lingue.controls; let i=index;first as first;">
+
+									<div class="form-group col-md-8">
+										<select class="form-control" [formControlName]="i">
+											<option value="default">Seleziona dalla lista</option>
+											<option [value]="linguaCurrent.name" *ngFor="let linguaCurrent of lingueList">{{ linguaCurrent.name }}
+											</option>
+										</select>
+									</div>
+
+									<div class="form-group col-md-4">
+										<button type="button" class="btn btn-outline-primary btn-sm" *ngIf="lingua.valid && !first" (click)="rimuoviLingua(i)">
+											Rimuovi lingua
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="button" class="btn btn-outline-primary btn-sm" *ngIf="lingue.valid" (click)="aggiungiLingua()">
+									Aggiungi nuova lingua
+								</button>
+							</div>
+
+						<button type="submit" class="btn btn-primary" *ngIf="lingue.valid" (click)="salvaLM()">
+							SALVA
+						</button>
+
+
+					</form>
+					<pre><code>{{ LMForm.value | json }}</code></pre>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-12 col-md-9" *ngIf="!modifica">
+		<div class="d-flex justify-content-left mt-2">
+			<button type="button" class="btn btn-sm btn-outline-primary">
+				<i class="fa fa-edit"></i> Modificare
+			</button>
+		</div>
+	</div>
+</div>

@@ -95,7 +95,7 @@ export class EsperienzeProfessionaliComponent implements OnInit {
       attivita: [''],
       nomeDL: [''],
       cittaDL: [''],
-      nazioneDL: [''],
+      nazioneDL: ['default'],
       websiteDL: [''],
     });
   }

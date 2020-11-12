@@ -46,4 +46,5 @@ export interface EsperienzeProfessionali {
 export interface Curriculum {
 	infoPersonali?: InfoPersonali;
 	esperienzeProfessionali?: EsperienzeProfessionali[]; 
+	linguaMadre?: Array<string>;
 }

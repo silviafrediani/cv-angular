@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { InfoPersonaliComponent } from './features/info-personali/info-personali.component';
 import { EsperienzeProfessionaliComponent } from './features/esperienze-professionali/esperienze-professionali.component';
+import { LinguaMadreComponent } from './features/lingua-madre/lingua-madre.component';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     InfoPersonaliComponent,
-    EsperienzeProfessionaliComponent
+    EsperienzeProfessionaliComponent,
+    LinguaMadreComponent
   ],
   imports: [
     BrowserModule,

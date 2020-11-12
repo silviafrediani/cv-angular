@@ -149,7 +149,7 @@ export class InfoPersonaliComponent implements OnInit {
   }  
 
   aggiungiSito() {
-    this.siti.push(this.formBuilder.control(''));
+    this.siti.push( this.creaSito() );
   }  
 
   rimuoviSito(index: number) {
