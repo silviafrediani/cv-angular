@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { InfoPersonali, Curriculum } from './../../model/curriculum';
+import { InfoPersonali, Curriculum, EsperienzeProfessionali } from './../../model/curriculum';
 
 @Injectable({
 	providedIn: 'root'
@@ -30,7 +30,8 @@ export class CurriculmStore {
 				{tipo: 'Abitazione', numero:'055717171'},
 				{tipo: 'Cellulare', numero:'3333615580'}
 			],
-		}
+		},
+
 	};
 
 	saveIP(infoPersonali: InfoPersonali) {
@@ -40,6 +41,15 @@ export class CurriculmStore {
 
 	getIP() {
 		return this.curriculum.infoPersonali;
+	}
+
+	saveEP(esperienzeProfessionali: EsperienzeProfessionali[]) {
+		this.curriculum.esperienzeProfessionali = esperienzeProfessionali;		
+		console.log(this.curriculum);
+	}
+
+	getEP() {
+		return this.curriculum.esperienzeProfessionali;
 	}
 
 }

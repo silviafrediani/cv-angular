@@ -1,0 +1,159 @@
+<div class="row section-content align-items-start">
+	<div class="col-12 col-md-4 col-lg-3">
+		<h4>ESPERIENZE PROFESSIONALI</h4>
+	</div>
+	<div class="col-12 col-md-8 col-lg-9">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-scrollable">
+
+					<form novalidate [formGroup]="EPForm" (ngSubmit)="salvaEP()" class="mt-4 mb-5">
+
+						<div class="form-group" formArrayName="esperienze">
+
+							<div [formGroupName]="i" *ngFor="let esperienza of esperienze.controls; let i=index;first as first;" class="box-form">
+
+								<h2>Esperienza {{ i + 1}} 
+									<button type="button" class="btn btn-outline-primary btn-sm" *ngIf="esperienza.valid && !first" (click)="rimuoviEsperienza(i)">
+										Rimuovi esperienza
+									</button>
+								</h2>
+
+								<div class="form-row">
+
+									<div class="form-group col-md-4">
+										<label class="w-100">Da</label>
+										<div class="input-group">
+											<input class="form-control" 
+											placeholder="yyyy-mm-dd" 
+											formControlName="data_da" 
+											ngbDatepicker 
+											[minDate]="minDate"
+											[maxDate]="maxDate"
+											#data_da="ngbDatepicker">
+											<div class="input-group-append">
+												<button class="btn btn-outline-secondary" (click)="data_da.toggle()" type="button">
+													<i class="fa fa-calendar-alt"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group col-md-4">
+										<label class="w-100">A</label>
+										<div class="input-group">
+											<input 
+											class="form-control" 
+											placeholder="yyyy-mm-dd" 
+											formControlName="data_a" 
+											ngbDatepicker 
+											[minDate]="minDate"
+											[maxDate]="maxDate"
+											#data_a="ngbDatepicker"
+											>
+											<div class="input-group-append">
+												<button class="btn btn-outline-secondary" (click)="data_a.toggle()" type="button">
+													<i class="fa fa-calendar-alt"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group col-md-4 pt-3">
+										<label class="w-100"></label>
+										<div class="form-check">
+											<input type="checkbox" 
+											class="form-check-input" 
+											formControlName="in_corso"
+											id="in_corso"
+											[value]="true"
+											(click)="disable_enable_dp(i)">
+											<label class="form-check-label" for="in_corso">In corso</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="">Occupazione o posizione lavorativa ricoperta</label>
+									<input type="text" 
+									class="form-control" 
+									formControlName="occupazione" 
+									placeholder="es: Account Manager" 
+									[ngClass]="{
+																'is-invalid': occupazione?.invalid && (occupazione?.dirty || occupazione?.touched),
+																'is-valid': occupazione?.valid && occupazione?.dirty
+															}">
+									<div *ngIf="occupazione?.invalid && (occupazione?.dirty || occupazione?.touched)" class="invalid-feedback">
+										<div *ngIf="occupazione?.errors.required">
+											Il campo occupazione o posizione lavorativa è obbligatorio.
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="">Principali attività e responsabilità</label>
+									<textarea class="form-control" formControlName="attivita" placeholder="es: Relazioni con i fornitori"></textarea>
+								</div>
+								
+								<h4>Datore di lavoro</h4>
+								<div class="form-group">
+									<label for="">Nome</label>
+									<input type="text" 
+									class="form-control" 
+									formControlName="nomeDL" 
+									placeholder="Alma Mater Studiorum">
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<div class="form-group">
+											<label for="">Città</label>
+											<input type="text" 
+											class="form-control" 
+											formControlName="cittaDL" 
+											placeholder="Roma">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="">Nazione</label>
+										<select class="form-control" formControlName="nazioneDL">
+											<option value="default">Seleziona dalla lista</option>
+											<option [value]="nazioneCurrent.name" *ngFor="let nazioneCurrent of nazioni">{{ nazioneCurrent.name }}</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="">Website</label>
+									<input type="text" 
+									class="form-control" 
+									formControlName="websiteDL" 
+									placeholder="www.company.com">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<button type="button" class="btn btn-outline-primary btn-sm" *ngIf="esperienze.valid" (click)="aggiungiEsperienza()">
+								Aggiungi nuova esperienza
+							</button>
+						</div>
+
+						<button type="submit" [disabled]="EPForm.invalid" class="btn btn-primary">Salva</button>
+					
+					</form>
+					<pre><code>{{ EPForm.value | json }}</code></pre>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-12 col-md-9" *ngIf="!modifica">
+		<div class="d-flex justify-content-left mt-2">
+			<button type="button" class="btn btn-sm btn-outline-primary">
+				<i class="fa fa-edit"></i> Modificare
+			</button>
+		</div>
+	</div>
+</div>

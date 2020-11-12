@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { InfoPersonaliComponent } from './features/info-personali/info-personali.component';
+import { EsperienzeProfessionaliComponent } from './features/esperienze-professionali/esperienze-professionali.component';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    InfoPersonaliComponent
+    InfoPersonaliComponent,
+    EsperienzeProfessionaliComponent
   ],
   imports: [
     BrowserModule,

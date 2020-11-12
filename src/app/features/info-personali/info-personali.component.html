@@ -1,7 +1,6 @@
-<!-- INFORMAZIONI PERSONALI -->
 <div class="row section-content align-items-start">
 	<div class="col-12 col-md-4 col-lg-3">
-		<h4 class="titoletto-form">INFORMAZIONI PERSONALI</h4>
+		<h4>INFORMAZIONI PERSONALI</h4>
 	</div>
 	<div class="col-12 col-md-8 col-lg-9">
 
@@ -21,7 +20,7 @@
 						<p *ngIf="infoPersonali.sesso"><strong>Sesso: </strong>{{ infoPersonali.sesso }}</p>
 						<p *ngIf="infoPersonali.data_nascita"><strong>Data di nascita: </strong>
 							{{ infoPersonali.data_nascita.day + '/' + infoPersonali.data_nascita.month + '/' + infoPersonali.data_nascita.year }}</p>
-						<p *ngIf="infoPersonali.nazionalita && infoPersonali.nazionalita != 'default'">Nazionalità: {{ infoPersonali.nazionalita }}</p>
+						<p *ngIf="infoPersonali.nazionalita && infoPersonali.nazionalita != 'default'"><strong>Nazionalità: </strong>{{ infoPersonali.nazionalita }}</p>
 						<div *ngIf="infoPersonali.siti"> 	
 							<div *ngFor="let sito of infoPersonali.siti; first as first;">
 								<p *ngIf="first && sito.length"><strong>Siti web: </strong></p>
@@ -30,7 +29,7 @@
 						</div>
 						<div *ngIf="infoPersonali.telefoni">
 							<div *ngFor="let telefono of infoPersonali.telefoni; first as first;">
-								<p *ngIf="first && telefono.tipo.length && telefono.tipo != 'default' && telefono.numero.length">Telefoni: </p>
+								<p *ngIf="first && telefono.tipo.length && telefono.tipo != 'default' && telefono.numero.length"><strong>Telefoni: </strong></p>
 								<p *ngIf="telefono.tipo.length && telefono.tipo != 'default' && telefono.numero.length">{{telefono.tipo}} - {{telefono.numero}}</p>
 							</div>
 						</div>
@@ -195,6 +194,8 @@
 										<input class="form-control" 
 										placeholder="yyyy-mm-dd" 
 										formControlName="data_nascita"
+										[minDate]="minDate"
+										[maxDate]="maxDate"
 										ngbDatepicker #d="ngbDatepicker">
 										<div class="input-group-append">
 											<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">

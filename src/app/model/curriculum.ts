@@ -23,6 +23,27 @@ export interface InfoPersonali {
 	telefoni?: Telefoni[];
 }
 
+export interface EsperienzeProfessionali {
+	data_da?: {
+		year: number;
+		month: number;
+		day: number;
+	};
+	data_a?: {
+		year: number;
+		month: number;
+		day: number;
+	} | null;
+	in_corso?: boolean;
+	occupazione?: string;
+	attivita?: string;
+	nomeDL?: string;
+	cittaDL?: string;
+	nazioneDL?: string;
+	websiteDL?: string;
+}
+
 export interface Curriculum {
 	infoPersonali?: InfoPersonali;
+	esperienzeProfessionali?: EsperienzeProfessionali[]; 
 }

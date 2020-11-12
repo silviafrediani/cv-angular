@@ -13,6 +13,8 @@ export class InfoPersonaliComponent implements OnInit {
   
   IPForm: FormGroup;
   data_nascita: NgbDateStruct;
+  minDate = { year: 1950, month: 1, day: 1 };
+  maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
   siti: FormArray;
   telefoni: FormArray;
   tipoTelefoni = ['Abitazione','Cellulare','Lavoro'];
