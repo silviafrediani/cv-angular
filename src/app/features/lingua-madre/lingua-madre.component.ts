@@ -27,14 +27,14 @@ export class LinguaMadreComponent implements OnInit {
     this.linguaMadre = this.curriculumStore.getLM();
 
     this.LMForm = this.formBuilder.group({
-      lingue: this.getlingueFormArray(),
+      lingue: this.getLingueFormArray(),
     });
 
     this.lingue = <FormArray>this.LMForm.get('lingue');
 
   }
 
-  getlingueFormArray(): FormArray {
+  getLingueFormArray(): FormArray {
     if (this.linguaMadre) {
       return this.formBuilder.array(this.linguaMadre.map(item => {
         const group = this.creaLingua();

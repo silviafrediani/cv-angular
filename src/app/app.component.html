@@ -5,7 +5,7 @@
 
 		<input type="hidden" id="IdCandidato" name="IdCandidato" value="" />
 		
-		<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-2">
+		<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-3">
 			<ngb-panel title="Info Personali">
 				<ng-template ngbPanelContent>
 
@@ -32,6 +32,17 @@
 				<ng-template ngbPanelContent>
 
 					<app-lingua-madre></app-lingua-madre>
+
+				</ng-template>
+			</ngb-panel>
+
+			<ngb-panel>
+				<ng-template ngbPanelTitle>
+					Lingue Straniere
+				</ng-template>
+				<ng-template ngbPanelContent>
+
+					<app-lingue-straniere></app-lingue-straniere>
 
 				</ng-template>
 			</ngb-panel>

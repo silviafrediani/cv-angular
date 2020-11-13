@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { InfoPersonali, Curriculum, EsperienzeProfessionali } from './../../model/curriculum';
+import { InfoPersonali, Curriculum, EsperienzeProfessionali, LingueStraniere } from './../../model/curriculum';
 
 @Injectable({
 	providedIn: 'root'
@@ -87,6 +87,26 @@ export class CurriculmStore {
 			},
 		],
 		linguaMadre: ['arabo', 'italiano'],
+		lingueStraniere: [
+			{
+				lingua: 'italiano',
+				comprensione_ascolto: 'A1',
+				comprensione_lettura: 'A1',
+				parlato_interazione: 'A1',
+				parlato_orale: 'A1',
+				scritto: 'A1',
+				diplomi: ['master1','diploma1','master11','sadas asd as']
+			},
+			{
+				lingua: 'arabo',
+				comprensione_ascolto: 'A2',
+				comprensione_lettura: 'B1',
+				parlato_interazione: 'A2',
+				parlato_orale: 'A2',
+				scritto: 'A2',
+				diplomi: ['master2', 'diploma2','master22','sad asdas']
+			},
+		],
 	};
 
 	saveIP(infoPersonali: InfoPersonali) {
@@ -114,6 +134,15 @@ export class CurriculmStore {
 
 	getLM() {
 		return this.curriculum.linguaMadre;
+	}
+
+	saveLS(lingueStraniere: LingueStraniere[]) {
+		this.curriculum.lingueStraniere = lingueStraniere;
+		console.log(this.curriculum);
+	}
+
+	getLS() {
+		return this.curriculum.lingueStraniere;
 	}
 
 

@@ -43,8 +43,19 @@ export interface EsperienzeProfessionali {
 	websiteDL?: string;
 }
 
+export interface LingueStraniere {
+	lingua?: string;
+	comprensione_ascolto?: string;
+	comprensione_lettura?: string;
+	parlato_interazione?: string;
+	parlato_orale?: string;
+	scritto?: string;
+	diplomi?: Array<string>;
+}
+
 export interface Curriculum {
 	infoPersonali?: InfoPersonali;
 	esperienzeProfessionali?: EsperienzeProfessionali[]; 
 	linguaMadre?: Array<string>;
+	lingueStraniere?: LingueStraniere[];
 }
