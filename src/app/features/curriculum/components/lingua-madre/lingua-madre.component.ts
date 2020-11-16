@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Lingue } from './../../json/lingue';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
-import { CurriculmStore } from './../services/curriculum.store';
-import { forbiddenLanguageValidator } from './../validators/lingua.validator';
+import { CurriculmStore } from './../../services/curriculum.store';
+import { forbiddenLanguageValidator } from './../../validators/lingua.validator';
 
 @Component({
   selector: 'app-lingua-madre',

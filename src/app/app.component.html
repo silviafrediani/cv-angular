@@ -1,53 +1,9 @@
 <div class="container position-relative">
 
 	<div class="section-title">
-		<h1>Curriculum Vitae</h1>
-
-		<input type="hidden" id="IdCandidato" name="IdCandidato" value="" />
+		<h1>Curriculum Vitae</h1>	
 		
-		<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-3">
-			<ngb-panel title="Info Personali">
-				<ng-template ngbPanelContent>
-
-					<app-info-personali></app-info-personali>
-
-				</ng-template>
-			</ngb-panel>
-
-			<ngb-panel>
-				<ng-template ngbPanelTitle>
-					Esperienze Professionali
-				</ng-template>
-				<ng-template ngbPanelContent>
-
-					<app-esperienze-professionali></app-esperienze-professionali>
-
-				</ng-template>
-			</ngb-panel>
-
-			<ngb-panel>
-				<ng-template ngbPanelTitle>
-					Lingua Madre
-				</ng-template>
-				<ng-template ngbPanelContent>
-
-					<app-lingua-madre></app-lingua-madre>
-
-				</ng-template>
-			</ngb-panel>
-
-			<ngb-panel>
-				<ng-template ngbPanelTitle>
-					Lingue Straniere
-				</ng-template>
-				<ng-template ngbPanelContent>
-
-					<app-lingue-straniere></app-lingue-straniere>
-
-				</ng-template>
-			</ngb-panel>
-
-		</ngb-accordion>
+		<app-curriculum></app-curriculum>
 
 	</div>
 

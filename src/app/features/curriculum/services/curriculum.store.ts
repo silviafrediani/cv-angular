@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { InfoPersonali, Curriculum, EsperienzeProfessionali, LingueStraniere } from './../../model/curriculum';
+import { InfoPersonali, Curriculum, EsperienzeProfessionali, LingueStraniere } from './../model/curriculum';
 
 @Injectable({
 	providedIn: 'root'

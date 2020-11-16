@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Nazioni } from './../../json/nazioni';
 import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, FormControl } from '@angular/forms';
-import { CurriculmStore } from './../services/curriculum.store';
+import { CurriculmStore } from './../../services/curriculum.store';
 import { InfoPersonali } from './../../model/curriculum';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 @Component({

@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { Lingue } from './../../json/lingue';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
-import { CurriculmStore } from './../services/curriculum.store';
+import { CurriculmStore } from './../../services/curriculum.store';
 import { LingueStraniere } from './../../model/curriculum';
-import { forbiddenLanguageValidator } from './../validators/lingua.validator';
+import { forbiddenLanguageValidator } from './../../validators/lingua.validator';
 
 @Component({
   selector: 'app-lingue-straniere',
