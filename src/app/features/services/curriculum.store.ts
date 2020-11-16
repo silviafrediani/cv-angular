@@ -95,7 +95,7 @@ export class CurriculmStore {
 				parlato_interazione: 'A1',
 				parlato_orale: 'A1',
 				scritto: 'A1',
-				diplomi: ['master1','diploma1','master11','sadas asd as']
+				diplomi: ['master1','diploma1','master11']
 			},
 			{
 				lingua: 'arabo',
@@ -104,7 +104,7 @@ export class CurriculmStore {
 				parlato_interazione: 'A2',
 				parlato_orale: 'A2',
 				scritto: 'A2',
-				diplomi: ['master2', 'diploma2','master22','sad asdas']
+				diplomi: ['master2', 'diploma2','master22']
 			},
 		],
 	};

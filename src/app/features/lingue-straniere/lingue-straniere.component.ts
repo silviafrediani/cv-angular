@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { Lingue } from './../../json/lingue';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { CurriculmStore } from './../services/curriculum.store';
@@ -10,7 +10,7 @@ import { forbiddenLanguageValidator } from './../validators/lingua.validator';
   templateUrl: './lingue-straniere.component.html',
   styleUrls: ['./lingue-straniere.component.scss']
 })
-export class LingueStraniereComponent implements OnInit {
+export class LingueStraniereComponent implements OnInit, AfterViewInit {
 
   LSForm: FormGroup;
   lingueStraniere: LingueStraniere[];
@@ -25,6 +25,7 @@ export class LingueStraniereComponent implements OnInit {
   ];
   modifica = false;
   lingueList = Lingue;
+  @ViewChildren("diplomaInput", { read: ElementRef }) diplomaInput: QueryList<ElementRef>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,11 +44,13 @@ export class LingueStraniereComponent implements OnInit {
 
   }
 
-  // nel template -> *ngFor="let diploma of diplomi(i).controls; let j=index"
-  diplomi(index: number): FormArray {
-    return this.lingueS.at(index).get("diplomi") as FormArray
-  }  
+  ngAfterViewInit() {
+    this.diplomaInput.changes.subscribe(input => {
+      input.last.nativeElement.focus();
+    });
+  }
 
+  // LINGUE
   getLingueFormArray(): FormArray {
     let aggiungoLingua = false;
     if (this.lingueStraniere) {
@@ -89,6 +92,12 @@ export class LingueStraniereComponent implements OnInit {
   rimuoviLingua(index: number) {
     this.lingueS.removeAt(index);
   }
+
+  // DIPLOMI
+  // nel template -> *ngFor="let diploma of diplomi(i).controls; let j=index"
+  diplomi(linguaIndex: number): FormArray {
+    return this.lingueS.at(linguaIndex).get("diplomi") as FormArray
+  }  
 
   getDiplomiFormArray(aggiungoLingua: boolean, index: any = null): FormArray {
     

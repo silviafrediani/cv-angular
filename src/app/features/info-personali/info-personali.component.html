@@ -39,11 +39,14 @@
 						<form novalidate [formGroup]="IPForm" (ngSubmit)="salvaIP()" class="mt-4 mb-5">
 							<div class="form-group">
 								<label for="foto">Foto</label>
-								<input type="file" 
-								class="form-control-file" 
-								id="foto"
-								name="foto"
-								formControlName="foto">
+								<div class="custom-file">
+									<input type="file" 
+									class="custom-file-input"
+									id="foto"
+									name="foto"
+									formControlName="foto">
+									<label class="custom-file-label" for="customFile">Carica file</label>
+								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
@@ -103,7 +106,7 @@
 							</div>
 							<div class="form-group">
 								<label for="">Nazione</label>
-								<select class="form-control" formControlName="nazione">
+								<select class="custom-select" formControlName="nazione">
 									<option value="default">Seleziona dalla lista</option>
 									<option [value]="nazioneCurrent.name" *ngFor="let nazioneCurrent of nazioni">{{ nazioneCurrent.name }}</option>
 								</select>
@@ -113,7 +116,7 @@
 								<label class="w-100">Telefono(i)</label>
 								<div [formGroupName]="i" class="form-row" *ngFor="let telefono of telefoni.controls; let i=index;first as first;">
 									<div class="form-group col-md-4">
-										<select class="form-control" formControlName="tipo">
+										<select class="custom-select" formControlName="tipo">
 											<option value="default">Seleziona Tipo</option>
 											<option [value]="tipoTelefono" *ngFor="let tipoTelefono of tipoTelefoni">{{ tipoTelefono }}</option>
 										</select>
@@ -205,7 +208,7 @@
 										ngbDatepicker #d="ngbDatepicker">
 										<div class="input-group-append">
 											<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-												<i class="fa fa-calendar-alt"></i>
+												<i class="fa fa-calendar"></i>
 											</button>
 										</div>
 									</div>
@@ -214,7 +217,7 @@
 			
 							<div class="form-group">
 								<label for="">Nazionalita</label>
-								<select class="form-control" formControlName="nazionalita">
+								<select class="custom-select" formControlName="nazionalita">
 									<option value="default">Seleziona dalla lista</option>
 									<option [value]="nazionalitaCurrent.name" *ngFor="let nazionalitaCurrent of nazioni">{{ nazionalitaCurrent.name }}</option>
 								</select>

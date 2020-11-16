@@ -37,57 +37,75 @@
 								</div>
 								<div class="form-group p-4" style="border:1px solid lightgrey;background:white;">
 									<p>COMPRENSIONE</p>
-									<div class="">
-										<i class="fa fa-headphones input-prefix mr-4"></i>
-										<select class="form-control" formControlName="comprensione_ascolto">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="inputGroupPrepend">
+												<i class="fa fa-headphones input-prefix"></i>
+											</span>
+										</div>
+										<select class="custom-select" formControlName="comprensione_ascolto">
 											<option value="" disabled selected>Ascolto - Seleziona dalla lista</option>
 											<option *ngFor="let livello of livelli" [value]="livello.id">{{ livello.name }}</option>
 										</select>
 									</div>
-									<div class="">
-										<i class="fa fa-headphones input-prefix mr-4"></i>
-										<select class="form-control" formControlName="comprensione_lettura">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="inputGroupPrepend">
+												<i class="fa fa-headphones input-prefix"></i>
+											</span>
+										</div>
+										<select class="custom-select" formControlName="comprensione_lettura">
 											<option value="" disabled selected>Lettura - Seleziona dalla lista</option>
 											<option *ngFor="let livello of livelli" [value]="livello.id">{{ livello.name }}</option>
 										</select>
 									</div>
 
 									<p class="mt-3">PARLATO</p>
-									<div class="">
-										<i class="fa fa-headphones input-prefix mr-4"></i>
-										<select class="form-control" formControlName="parlato_interazione">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="inputGroupPrepend">
+												<i class="fa fa-microphone"></i>
+											</span>
+										</div>
+										<select class="custom-select" formControlName="parlato_interazione">
 											<option value="" disabled selected>Ascolto - Seleziona dalla lista</option>
 											<option *ngFor="let livello of livelli" [value]="livello.id">{{ livello.name }}</option>
 										</select>
 									</div>
-									<div class="">
-										<i class="fa fa-headphones input-prefix mr-4"></i>
-										<select class="form-control" formControlName="parlato_orale">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="inputGroupPrepend">
+												<i class="fa fa-microphone"></i>
+											</span>
+										</div>
+										<select class="custom-select" formControlName="parlato_orale">
 											<option value="" disabled selected>Lettura - Seleziona dalla lista</option>
 											<option *ngFor="let livello of livelli" [value]="livello.id">{{ livello.name }}</option>
 										</select>
 									</div>
 
 									<p class="mt-3">PRODUZIONE SCRITTA</p>
-									<div class="">
-										<i class="fa fa-headphones input-prefix mr-4"></i>
-										<select class="form-control" formControlName="scritto">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="inputGroupPrepend">
+												<i class="fa fa-file"></i>
+											</span>
+										</div>
+										<select class="custom-select" formControlName="scritto">
 											<option value="" disabled selected>Ascolto - Seleziona dalla lista</option>
 											<option *ngFor="let livello of livelli" [value]="livello.id">{{ livello.name }}</option>
 										</select>
 									</div>
 
 								</div>
-
 								
 								<div class="form-group col-md-12">
 									<h4>Diploma(i) o certificato(i)</h4>
 								</div>
 								<div class="form-group" formArrayName="diplomi">
-									<label class="w-100">Sito web / Blog / Linkedin</label>
 									<div class="form-row" *ngFor="let diploma of diplomi(i).controls; let j=index">
 										<div class="form-group col-md-8">
-											<input type="text" class="form-control" [formControlName]="j" placeholder="Master in spagnolo">
+											<input #diplomaInput type="text" class="form-control" [formControlName]="j" placeholder="Master in spagnolo">
 										</div>
 										<div class="form-group col-md-4">
 											<button type="button" class="btn btn-outline-primary btn-sm" *ngIf="diploma.valid" (click)="rimuoviDiploma(i,j)">
@@ -101,7 +119,6 @@
 										Aggiungi nuovo diploma
 									</button>
 								</div>
-
 
 							</div>
 						</div>
