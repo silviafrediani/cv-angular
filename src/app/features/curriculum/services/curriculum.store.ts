@@ -113,37 +113,29 @@ export class CurriculmStore {
 		this.curriculum.infoPersonali = infoPersonali;
 		console.log(this.curriculum);
 	}
-
 	getIP() {
 		return this.curriculum.infoPersonali;
 	}
-
 	saveEP(esperienzeProfessionali: EsperienzeProfessionali[]) {
 		this.curriculum.esperienzeProfessionali = esperienzeProfessionali;
 		console.log(this.curriculum);
 	}
-
 	getEP() {
 		return this.curriculum.esperienzeProfessionali;
 	}
-
 	saveLM(linguaMadre: Array<string>) {
 		this.curriculum.linguaMadre = linguaMadre;
 		console.log(this.curriculum);
 	}
-
 	getLM() {
 		return this.curriculum.linguaMadre;
 	}
-
 	saveLS(lingueStraniere: LingueStraniere[]) {
 		this.curriculum.lingueStraniere = lingueStraniere;
 		console.log(this.curriculum);
 	}
-
 	getLS() {
 		return this.curriculum.lingueStraniere;
 	}
-
 
 }

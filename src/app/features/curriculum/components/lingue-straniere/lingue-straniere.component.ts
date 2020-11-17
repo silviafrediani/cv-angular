@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChildren, QueryList, Input, Output, EventEmitter } from '@angular/core';
 import { Lingue } from './../../json/lingue';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { CurriculmStore } from './../../services/curriculum.store';
@@ -10,10 +10,10 @@ import { forbiddenLanguageValidator } from './../../validators/lingua.validator'
   templateUrl: './lingue-straniere.component.html',
   styleUrls: ['./lingue-straniere.component.scss']
 })
-export class LingueStraniereComponent implements OnInit, AfterViewInit {
+export class LingueStraniereComponent implements OnInit {
 
   LSForm: FormGroup;
-  lingueStraniere: LingueStraniere[];
+  //lingueStraniere: LingueStraniere[];
   lingueS: FormArray;
   livelli = [
     { id: 'A1', name: 'A1 - Utente base' },
@@ -27,6 +27,9 @@ export class LingueStraniereComponent implements OnInit, AfterViewInit {
   lingueList = Lingue;
   @ViewChildren("diplomaInput", { read: ElementRef }) diplomaInput: QueryList<ElementRef>;
 
+  @Input() lingueStraniere: LingueStraniere[];
+  @Output() saveLS: EventEmitter<LingueStraniere[]> = new EventEmitter();
+
   constructor(
     private formBuilder: FormBuilder,
     public curriculumStore: CurriculmStore
@@ -34,20 +37,12 @@ export class LingueStraniereComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    this.lingueStraniere = this.curriculumStore.getLS();
-
     this.LSForm = this.formBuilder.group({
       lingueS: this.getLingueFormArray()
     });
 
     this.lingueS = this.LSForm.get('lingueS') as FormArray;  
 
-  }
-
-  ngAfterViewInit() {
-    this.diplomaInput.changes.subscribe(input => {
-      input.last.nativeElement.focus();
-    });
   }
 
   // LINGUE
@@ -129,9 +124,8 @@ export class LingueStraniereComponent implements OnInit, AfterViewInit {
   }  
 
   salvaLS() {
-    this.curriculumStore.saveLS(this.LSForm.value);
+    this.saveLS.emit(this.LSForm.value.lingueS);
     this.modifica = false;
-    this.lingueStraniere = this.curriculumStore.getLS();
   }
 
   modificaLS() {

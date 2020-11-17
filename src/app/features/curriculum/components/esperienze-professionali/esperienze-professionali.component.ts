@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Nazioni } from './../../json/nazioni';
 import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { CurriculmStore } from './../../services/curriculum.store';
@@ -13,7 +13,7 @@ import { EsperienzeProfessionali } from './../../model/curriculum';
 export class EsperienzeProfessionaliComponent implements OnInit {
 
   EPForm: FormGroup;
-  esperienzeProfessionali: EsperienzeProfessionali[];
+  //esperienzeProfessionali: EsperienzeProfessionali[];
   esperienze: FormArray;
   modifica = false;
   nazioni = Nazioni;
@@ -21,6 +21,9 @@ export class EsperienzeProfessionaliComponent implements OnInit {
   data_a: NgbDateStruct | null;
   minDate = { year: 1950, month: 1, day: 1 };
   maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
+
+  @Input() esperienzeProfessionali: EsperienzeProfessionali[];
+  @Output() saveEP: EventEmitter<EsperienzeProfessionali[]> = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -109,9 +112,8 @@ export class EsperienzeProfessionaliComponent implements OnInit {
   }  
   
   salvaEP() {
-    this.curriculumStore.saveEP(this.EPForm.value);
+    this.saveEP.emit(this.EPForm.value.esperienze);
     this.modifica = false;
-    this.esperienzeProfessionali = this.curriculumStore.getEP();
   }
 
   modificaIP() {

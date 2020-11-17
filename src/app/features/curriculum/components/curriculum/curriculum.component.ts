@@ -1,4 +1,6 @@
+import { InfoPersonali, EsperienzeProfessionali, LingueStraniere } from './../../model/curriculum';
 import { Component, OnInit } from '@angular/core';
+import { CurriculmStore } from './../../services/curriculum.store';
 
 @Component({
   selector: 'app-curriculum',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurriculumComponent implements OnInit {
 
-  constructor() { }
+  constructor(public curriculumStore: CurriculmStore) { }
 
   ngOnInit(): void {
   }
 
+  onSaveIPEvent(ip: InfoPersonali) {
+    console.log(ip);
+    this.curriculumStore.saveIP(ip);
+  }
+  onSaveEPEvent(ep: EsperienzeProfessionali[]) {
+    console.log(ep);
+    this.curriculumStore.saveEP(ep);
+  }
+  onSaveLMEvent(lm: Array<string>) {
+    console.log(lm);
+    this.curriculumStore.saveLM(lm);
+  }
+  onSaveLSEvent(ls: LingueStraniere[]) {
+    console.log(ls);
+    this.curriculumStore.saveLS(ls);
+  }
 }

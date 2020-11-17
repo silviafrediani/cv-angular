@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Lingue } from './../../json/lingue';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { CurriculmStore } from './../../services/curriculum.store';
@@ -12,10 +12,13 @@ import { forbiddenLanguageValidator } from './../../validators/lingua.validator'
 export class LinguaMadreComponent implements OnInit {
 
   LMForm: FormGroup;
-  linguaMadre: Array<string>;
+  //linguaMadre: Array<string>;
   lingue: FormArray;
   modifica = false;
   lingueList = Lingue;
+
+  @Input() linguaMadre: Array<string>;
+  @Output() saveLM: EventEmitter<string> = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,8 +26,6 @@ export class LinguaMadreComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.linguaMadre = this.curriculumStore.getLM();
 
     this.LMForm = this.formBuilder.group({
       lingue: this.getLingueFormArray(),
@@ -66,9 +67,7 @@ export class LinguaMadreComponent implements OnInit {
   }  
   
   salvaLM() {
-    this.curriculumStore.saveLM(this.LMForm.value);
-    this.modifica = false;
-    this.linguaMadre = this.curriculumStore.getLM();
+    this.saveLM.emit(this.LMForm.value.lingue);
   }  
 
 }

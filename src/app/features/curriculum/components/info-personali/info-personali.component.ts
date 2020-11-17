@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Nazioni } from './../../json/nazioni';
 import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { CurriculmStore } from './../../services/curriculum.store';
@@ -24,8 +24,11 @@ export class InfoPersonaliComponent implements OnInit {
     { id: 'N', name: 'Da non indicare' },
   ]; 
   nazioni = Nazioni;
-  infoPersonali: InfoPersonali;
+  //infoPersonali: InfoPersonali;
   modifica = false;
+
+  @Input() infoPersonali: InfoPersonali;
+  @Output() saveIP: EventEmitter<InfoPersonali> = new EventEmitter();
   
   constructor(
     private formBuilder: FormBuilder,
@@ -184,9 +187,9 @@ export class InfoPersonaliComponent implements OnInit {
   }   
 
   salvaIP() {
-    this.curriculumStore.saveIP(this.IPForm.value);
+    this.saveIP.emit(this.IPForm.value);
     this.modifica = false;
-    this.infoPersonali = this.curriculumStore.getIP();
+    //this.infoPersonali = this.curriculumStore.getIP();
   }
 
   modificaIP() {

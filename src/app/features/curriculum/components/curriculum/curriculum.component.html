@@ -1,9 +1,8 @@
 <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-3">
+	
 	<ngb-panel title="Info Personali">
 		<ng-template ngbPanelContent>
-
-			<app-info-personali></app-info-personali>
-
+			<app-info-personali [infoPersonali]="curriculumStore.getIP()" (saveIP)="onSaveIPEvent($event)"></app-info-personali>
 		</ng-template>
 	</ngb-panel>
 
@@ -12,9 +11,7 @@
 			Esperienze Professionali
 		</ng-template>
 		<ng-template ngbPanelContent>
-
-			<app-esperienze-professionali></app-esperienze-professionali>
-
+			<app-esperienze-professionali [esperienzeProfessionali]="curriculumStore.getEP()" (saveEP)="onSaveEPEvent($event)"></app-esperienze-professionali>
 		</ng-template>
 	</ngb-panel>
 
@@ -23,9 +20,7 @@
 			Lingua Madre
 		</ng-template>
 		<ng-template ngbPanelContent>
-
-			<app-lingua-madre></app-lingua-madre>
-
+			<app-lingua-madre [linguaMadre]="curriculumStore.getLM()" (saveLM)="onSaveLMEvent($event)"></app-lingua-madre>
 		</ng-template>
 	</ngb-panel>
 
@@ -34,9 +29,7 @@
 			Lingue Straniere
 		</ng-template>
 		<ng-template ngbPanelContent>
-
-			<app-lingue-straniere></app-lingue-straniere>
-
+			<app-lingue-straniere [lingueStraniere]="curriculumStore.getLS()" (saveLS)="onSaveLSEvent($event)"></app-lingue-straniere>
 		</ng-template>
 	</ngb-panel>
 

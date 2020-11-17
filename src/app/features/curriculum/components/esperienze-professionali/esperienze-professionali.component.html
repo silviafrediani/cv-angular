@@ -66,10 +66,10 @@
 											<input type="checkbox" 
 											class="form-check-input" 
 											formControlName="in_corso"
-											id="in_corso"
+											[id]="'in_corso'+i"
 											[value]="true"
 											(click)="disable_enable_dp(i)">
-											<label class="form-check-label" for="in_corso">In corso</label>
+											<label class="form-check-label" [for]="'in_corso'+i">In corso</label>
 										</div>
 									</div>
 								</div>
