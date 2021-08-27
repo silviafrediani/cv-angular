@@ -32,7 +32,7 @@ export class EsperienzeProfessionaliComponent implements OnInit {
 
   ngOnInit() {
 
-    this.esperienzeProfessionali = this.curriculumStore.getEP();
+    //this.esperienzeProfessionali = this.curriculumStore.getEP();
 
     this.EPForm = this.formBuilder.group({
       esperienze: this.getEsperienzeFormArray()

@@ -1,36 +1,45 @@
-<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-3">
+<div class="container mt-3">
+	<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-3">
 	
-	<ngb-panel title="Info Personali">
-		<ng-template ngbPanelContent>
-			<app-info-personali [infoPersonali]="curriculumStore.getIP()" (saveIP)="onSaveIPEvent($event)"></app-info-personali>
-		</ng-template>
-	</ngb-panel>
+		<ngb-panel title="Info Personali">
+			<ng-template ngbPanelContent>
+				<app-info-personali [infoPersonali]="curriculumStore.getIP()" (saveIP)="onSaveIPEvent($event)"></app-info-personali>
+			</ng-template>
+		</ngb-panel>
 
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			Esperienze Professionali
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<app-esperienze-professionali [esperienzeProfessionali]="curriculumStore.getEP()" (saveEP)="onSaveEPEvent($event)"></app-esperienze-professionali>
-		</ng-template>
-	</ngb-panel>
+		<ngb-panel>
+			<ng-template ngbPanelTitle>
+				Esperienze Professionali
+			</ng-template>
+			<ng-template ngbPanelContent>
+				<app-esperienze-professionali [esperienzeProfessionali]="curriculumStore.getEP()" (saveEP)="onSaveEPEvent($event)"></app-esperienze-professionali>
+			</ng-template>
+		</ngb-panel>
 
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			Lingua Madre
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<app-lingua-madre [linguaMadre]="curriculumStore.getLM()" (saveLM)="onSaveLMEvent($event)"></app-lingua-madre>
-		</ng-template>
-	</ngb-panel>
+		<ngb-panel>
+			<ng-template ngbPanelTitle>
+				Lingua Madre
+			</ng-template>
+			<ng-template ngbPanelContent>
+				<app-lingua-madre [linguaMadre]="curriculumStore.getLM()" (saveLM)="onSaveLMEvent($event)"></app-lingua-madre>
+			</ng-template>
+		</ngb-panel>
 
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			Lingue Straniere
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<app-lingue-straniere [lingueStraniere]="curriculumStore.getLS()" (saveLS)="onSaveLSEvent($event)"></app-lingue-straniere>
-		</ng-template>
-	</ngb-panel>
+		<ngb-panel>
+			<ng-template ngbPanelTitle>
+				Lingue Straniere
+			</ng-template>
+			<ng-template ngbPanelContent>
+				<app-lingue-straniere [lingueStraniere]="curriculumStore.getLS()" (saveLS)="onSaveLSEvent($event)"></app-lingue-straniere>
+			</ng-template>
+		</ngb-panel>
 
-</ngb-accordion>
+	</ngb-accordion>
+</div>
+
+<div class="wrapper-salva-cv show d-flex justify-content-end">
+	<button type="button" id="salva-cv" class="btn btn-primary">
+		<i class="fa fa-save"></i> Salva CV</button>
+</div>
+<a class="btn btn-primary-color toggle-salva-cv" data-toggle="tooltip" title="Contrai / Espandi"><span><i
+			class="fa fa-angle-double-down"></i></span></a>

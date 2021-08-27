@@ -13,6 +13,7 @@ import { EsperienzeProfessionaliComponent } from './components/esperienze-profes
 import { LinguaMadreComponent } from './components/lingua-madre/lingua-madre.component';
 import { LingueStraniereComponent } from './components/lingue-straniere/lingue-straniere.component';
 
+
 @NgModule({
   declarations: [
     CurriculumComponent,

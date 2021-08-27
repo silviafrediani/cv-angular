@@ -37,7 +37,7 @@ export class InfoPersonaliComponent implements OnInit {
     
   ngOnInit() {
     
-    this.infoPersonali = this.curriculumStore.getIP();
+    //this.infoPersonali = this.curriculumStore.getIP();
     //console.log(this.infoPersonali);
 
     this.IPForm = this.formBuilder.group({
